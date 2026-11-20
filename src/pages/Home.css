@@ -1,0 +1,186 @@
+.home {
+    position: relative;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    overflow: hidden;
+    padding: 48px 20px;
+    background: transparent;
+    color: #fff;
+    text-align: center;
+}
+
+.menu-card {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 440px);
+    padding: 2px;
+    border-radius: 22px;
+    background: conic-gradient(from var(--neon-angle), #74eaff, #a56cff, #ffe46d, #74eaff);
+    animation: neon-rotation 6s linear infinite;
+    box-shadow: 0 0 22px rgba(116, 234, 255, 0.17), 0 0 50px rgba(165, 108, 255, 0.13);
+}
+
+.menu-card__content {
+    min-height: 100%;
+    padding: 40px 38px 28px;
+    border-radius: 20px;
+    background: linear-gradient(155deg, rgba(10, 23, 48, 0.98), rgba(15, 14, 39, 0.98));
+}
+
+.menu-eyebrow {
+    margin-bottom: 10px;
+    color: #8deaff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.menu-card h1 {
+    color: #f5f4ff;
+    font-size: clamp(2rem, 8vw, 2.65rem);
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+    text-shadow: 0 0 22px rgba(128, 132, 255, 0.4);
+}
+
+.menu-subtitle {
+    margin: 12px 0 28px;
+    color: #a4b2d1;
+    font-size: 0.94rem;
+    line-height: 1.55;
+}
+
+.menu-form {
+    display: grid;
+    gap: 11px;
+    text-align: left;
+}
+
+.menu-label {
+    margin-top: 4px;
+    color: #c9d6f1;
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.menu-input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid rgba(139, 173, 255, 0.27);
+    border-radius: 10px;
+    outline: none;
+    background: rgba(5, 14, 34, 0.76);
+    color: #f5f4ff;
+    font-size: 0.95rem;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.menu-input::placeholder {
+    color: #7182a5;
+}
+
+.menu-input:focus {
+    border-color: #80e8ff;
+    box-shadow: 0 0 0 3px rgba(89, 217, 255, 0.13), 0 0 16px rgba(89, 217, 255, 0.16);
+}
+
+.menu-select {
+    cursor: pointer;
+}
+
+.menu-select option {
+    background: #101a35;
+    color: #f5f4ff;
+}
+
+.menu-button {
+    min-height: 48px;
+    margin-top: 7px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.98rem;
+    font-weight: 700;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px);
+}
+
+.menu-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.menu-button--play {
+    margin-top: 16px;
+    background: linear-gradient(100deg, #39d9f5, #9e6dff);
+    box-shadow: 0 0 20px rgba(93, 197, 255, 0.28);
+}
+
+.menu-button--play:hover {
+    box-shadow: 0 0 26px rgba(116, 234, 255, 0.47);
+}
+
+.menu-button--quit {
+    margin-top: 0;
+    border-color: rgba(179, 163, 255, 0.3);
+    background: rgba(119, 90, 177, 0.1);
+    color: #d3c8f2;
+}
+
+.menu-button--quit:hover {
+    background: rgba(119, 90, 177, 0.22);
+}
+
+.menu-message {
+    min-height: 1.4em;
+    margin-top: 17px;
+    color: #9eebff;
+    font-size: 0.88rem;
+}
+
+.home-caption {
+    position: absolute;
+    bottom: 18px;
+    color: rgba(175, 190, 224, 0.45);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+}
+
+@property --neon-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes neon-rotation {
+    to {
+        --neon-angle: 360deg;
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        padding: 30px 16px 54px;
+    }
+
+    .menu-card__content {
+        padding: 34px 24px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-card {
+        animation: none;
+    }
+
+    .menu-input,
+    .menu-button {
+        transition: none;
+    }
+}
