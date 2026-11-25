@@ -1,28 +1,28 @@
-import './App.css'
-import EasyLevel from "./pages/EasyLevel"
-import HardLevel from "./pages/HardLevel"
-import MediumLevel from './pages/MediumLevel';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import React, { useState } from "react";
+import HomeScreen from "./components/HomeScreen.jsx";
+import LevelScreen from "./components/LevelScreen.jsx";
 
+export default function App() {
+  const [selectedLevel, setSelectedLevel] = useState(1);
+  const [activeScreen, setActiveScreen] = useState("home"); // "home" | "level"
 
-
-function App() {
+  if (activeScreen === "home") {
+    return (
+      <HomeScreen
+        selectedLevel={selectedLevel}
+        onSelectLevel={setSelectedLevel}
+        onStart={(lvl) => {
+          setSelectedLevel(lvl);
+          setActiveScreen("level");
+        }}
+      />
+    );
+  }
 
   return (
-    <>
-       <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/medium-level" element={<MediumLevel />} />
-        <Route path="/hard-level" element={<HardLevel />} />
-        <Route path="/easy-level" element={<EasyLevel />} />
-
-      </Routes>
-           </BrowserRouter>
-
-    </>
-  )
+    <LevelScreen
+      level={selectedLevel}
+      onBackToHome={() => setActiveScreen("home")}
+    />
+  );
 }
-
-export default App
